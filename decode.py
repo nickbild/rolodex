@@ -1,10 +1,11 @@
 import math
 
 
-input = [161, 98, 35, 165, 166, 39, 169, 234, 43]
+input = [169, 193, 236, 246, 101, 193, 169, 110, 1, 175, 193, 249, 181, 193, 244, 239]
 
 
 letters = {
+    193 : " ",
     225 : "A",
     226 : "B",
     227 : "C",
@@ -42,6 +43,9 @@ def decode_block(block):
     if o1_binary[0:3] == "101":
         a = a + 64
         d = "1110"
+    elif o1_binary[0:3] == "000" or o1_binary[0:3] == "001":
+        a = a + 192
+        d = "1100"
     else:
         d = "1111"
 
@@ -52,20 +56,20 @@ def decode_block(block):
     elif o2_binary[0:3] == "011":
         b = b + 128
         d += "01"
-    elif o2_binary[0:3] == "001":
+    elif o2_binary[0:3] == "001" or o2_binary[0:3] == "000":
         b = b + 192
         d += "00"
     else:
         d += "11"
-    
+  
     c = block[2]
     if o3_binary[0:3] == "101":
         c = c + 64
         d += "10"
-    elif o3_binary[0:3] == "011":
+    elif o3_binary[0:3] == "011" or o3_binary[0:3] == "010":
         c = c + 128
         d += "01"
-    elif o3_binary[0:3] == "001":
+    elif o3_binary[0:3] == "001" or o3_binary[0:3] == "000":
         c = c + 192
         d += "00"
     else:
@@ -94,6 +98,8 @@ if leftover > 0:
     for i in range(leftover):
         block = input[input_len * 3 + i]
         output.append(block)
+
+print(output)
 
 for l in output:
     if l == 0:

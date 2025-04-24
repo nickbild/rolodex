@@ -1,10 +1,11 @@
 import math
 
 
-input = "ABCDEFGHIJKL"
+input = "I LOVE WIN DO YOU TOO"
 
 
 letters = {
+    " ": 193,
     "A": 225,
     "B": 226,
     "C": 227,
@@ -37,8 +38,10 @@ def encode_block(block):
     d_binary = format(letters[block[3]], "08b")
     
     o1 = letters[block[0]]
-    if d_binary[0:4] != "1111":
+    if d_binary[0:4] == "1110":
         o1 = o1 - 64
+    elif d_binary[0:4] == "1100":
+        o1 = o1 - 192
 
     o2 = letters[block[1]]
     if d_binary[3:6] == "110" or d_binary[3:6] == "010":
