@@ -1,11 +1,25 @@
 import math
 
 
-input = [244, 40, 233, 1, 41, 115, 161, 65, 116, 243, 244]
+input = [81, 82, 19, 85, 150, 23, 25, 208, 1, 129, 180, 104, 243, 1, 233, 193, 97, 1, 37, 243, 180]
 
 
 letters = {
     193 : " ",
+    199 : "'",
+    204 : ",",
+    206 : ".",
+    208 : "0",
+    209 : "1",
+    210 : "2",
+    211 : "3",
+    212 : "4",
+    213 : "5",
+    214 : "6",
+    215 : "7",
+    216 : "8",
+    217 : "9",
+    223: "?",
     225 : "A",
     226 : "B",
     227 : "C",
@@ -40,9 +54,12 @@ def decode_block(block):
     o3_binary = format(block[2], "08b")
 
     a = block[0]
-    if o1_binary[0:3] == "101":
+    if o1_binary[0:3] == "101" or o1_binary[0:3] == "100":
         a = a + 64
         d = "1110"
+    elif o1_binary[0:3] == "010":
+        a = a + 128
+        d = "1101"
     elif o1_binary[0:3] == "000" or o1_binary[0:3] == "001":
         a = a + 192
         d = "1100"
@@ -50,7 +67,7 @@ def decode_block(block):
         d = "1111"
 
     b = block[1]
-    if o2_binary[0:3] == "101":
+    if o2_binary[0:3] == "101" or o2_binary[0:3] == "100":
         b = b + 64
         d += "10"
     elif o2_binary[0:3] == "011" or o2_binary[0:3] == "010":
@@ -63,7 +80,7 @@ def decode_block(block):
         d += "11"
   
     c = block[2]
-    if o3_binary[0:3] == "101":
+    if o3_binary[0:3] == "101" or o3_binary[0:3] == "100":
         c = c + 64
         d += "10"
     elif o3_binary[0:3] == "011" or o3_binary[0:3] == "010":
