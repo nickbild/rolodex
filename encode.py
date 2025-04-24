@@ -48,6 +48,30 @@ letters = {
     "Z": 250
 }
 
+
+def calculate_checksum(packet_bytes):
+    """
+    Given a packet as a list of integers (0–255), returns the checksum byte.
+    Packet format is assumed to be:
+      [53, 2, payload..., 254, 254]
+    """
+    if len(packet_bytes) < 5:
+        raise ValueError("packet too short")
+    if packet_bytes[0] != 53 or packet_bytes[1] != 2:
+        raise ValueError("invalid header")
+    if packet_bytes[-1] != 254 or packet_bytes[-2] != 254:
+        raise ValueError("invalid trailer")
+
+    # strip off header (2 bytes) and trailer (2 bytes of 254)
+    payload = packet_bytes[2:-2]
+
+    S = sum(payload)
+    # two's-complement mod 256, then add the constant 4
+    checksum = (-S + 4) & 0xFF
+    
+    return checksum
+
+
 def encode_block(block):
     d_binary = format(letters[block[3]], "08b")
     
@@ -96,4 +120,15 @@ if leftover > 0:
         block = input[input_len * 4 + i]
         output.append(letters[block])
 
+# Print just the encoded data.
 print(output)
+
+# Add the rest of the packet.
+full_output = output.copy()
+full_output.insert(0, 2)
+full_output.insert(0, 53)
+full_output.append(254)
+full_output.append(254)
+full_output.append(calculate_checksum(full_output))
+
+print("Full output: ", full_output)
