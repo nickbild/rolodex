@@ -1,7 +1,7 @@
 import math
 
 
-input = "I LOVE WIN DO YOU TOO"
+input = "THIS IS A TEST"
 
 
 letters = {
@@ -66,6 +66,7 @@ input_len = math.floor(len(input) / 4)
 leftover = len(input) % 4
 output = []
 
+# Process the input in blocks of 4 characters.
 for i in range(input_len):
     block = input[i * 4:i * 4 + 4]
     o1, o2, o3 = encode_block(block)
@@ -73,6 +74,7 @@ for i in range(input_len):
     output.append(o2)
     output.append(o3)
 
+# Handle the leftover characters.
 if leftover > 0:
     for i in range(leftover):
         block = input[input_len * 4 + i]

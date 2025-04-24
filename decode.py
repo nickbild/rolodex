@@ -1,7 +1,7 @@
 import math
 
 
-input = [169, 193, 236, 246, 101, 193, 169, 110, 1, 175, 193, 249, 181, 193, 244, 239]
+input = [244, 40, 233, 1, 41, 115, 161, 65, 116, 243, 244]
 
 
 letters = {
@@ -53,7 +53,7 @@ def decode_block(block):
     if o2_binary[0:3] == "101":
         b = b + 64
         d += "10"
-    elif o2_binary[0:3] == "011":
+    elif o2_binary[0:3] == "011" or o2_binary[0:3] == "010":
         b = b + 128
         d += "01"
     elif o2_binary[0:3] == "001" or o2_binary[0:3] == "000":
@@ -86,6 +86,7 @@ input_len = math.floor(len(input) / 3)
 leftover = len(input) % 3
 output = []
 
+# Decode blocks of 3 bytes.
 for i in range(input_len):
     block = input[i * 3:i * 3 + 3]
     a, b, c, d = decode_block(block)
@@ -94,16 +95,15 @@ for i in range(input_len):
     output.append(c)
     output.append(d)
 
+# Decode any remainder.
 if leftover > 0:
     for i in range(leftover):
         block = input[input_len * 3 + i]
         output.append(block)
 
-print(output)
-
+# Print the decoded output.
 for l in output:
     if l == 0:
         continue
     print(letters[l], end="")
-
 print()
