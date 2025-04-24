@@ -145,7 +145,7 @@ full_output.append(calculate_checksum(full_output))
 
 # print("Full output: ", full_output)
 
-input("Initiate receive on Rolodex then press enter.")
+# input("Initiate receive on Rolodex then press enter.")
 
 import serial
 

@@ -151,9 +151,35 @@ if leftover > 0:
         block = data_received[input_len * 3 + i]
         output.append(block)
 
+request = ""
 # Print the decoded output.
 for l in output:
     if l == 0:
         continue
     print(letters[l], end="")
+    request += letters[l]
 print()
+
+# Query the LLM.
+from openai import OpenAI
+
+
+client = OpenAI(
+    base_url="http://127.0.0.1:8080/v1",
+    api_key = "sk-no-key-required"
+)
+
+completion = client.chat.completions.create(
+    model="LLaMA_CPP",
+    messages=[
+        {"role": "system", "content": "You are an AI assistant. Your priority is helping users with their requests."},
+        {"role": "user", "content": request}
+    ]
+)
+
+print(completion.choices[0].message.content[:256])
+
+# Send the response to the Rolodex.
+import os
+input("Initiate receive on Rolodex then press enter.")
+os.system("python3 rolodex_send.py '" + (completion.choices[0].message.content[:256].upper()) + "'")
