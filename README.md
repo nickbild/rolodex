@@ -10,6 +10,9 @@ What’ll happen if we grow dependent on these tools? Sure, it seems nice at fir
 
 Don't worry, I'll show you the path to safety. Come with me if you want to live!
 
+Watch the video on YouTube:
+![](https://raw.githubusercontent.com/nickbild/rolodex/refs/heads/main/media/video_preview.png)
+
 ## How It Works
 
 ![](https://raw.githubusercontent.com/nickbild/rolodex/refs/heads/main/media/rolodex.jpg)
