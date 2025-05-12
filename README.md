@@ -45,8 +45,6 @@ To use it with an LLM, first you create a new file containing your prompt for th
 
 The prompt is forwarded into a TinyLlama 1.1B LLM running locally on the machine. This could just as easily be a remote connection to ChatGPT or whatever else you want to use. When the LLM response is received, you will be prompted to put the Rolodex in receiving mode. The script then encodes the data and starts a serial transfer. The response appears in a new Memo file on the device, which you can slowly and painfully scroll through. Like I said, you’ve really got to want it.
 
-## Media
-
 ## Bill of Materials
 
 - 1 x Raspberry Pi 400
