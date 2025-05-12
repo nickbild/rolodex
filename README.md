@@ -26,7 +26,11 @@ Looking at the timing of a single bit being transferred, the transfer rate was a
 
 So far, so good. But then came the data. No, the developers didn’t play nice and transmit raw ASCII codes.  After lots of staring, I realized that if there are less than 4 bytes, they are transferred as ASCII codes with an offset. But once you get more than that, the groups of 4 are somehow encoded and reduced to three characters.
 
+![](https://raw.githubusercontent.com/nickbild/rolodex/refs/heads/main/media/data3.jpg)
+
 I made a spreadsheet with some example input/output data and, after looking at the binary representations of the inputs, some patterns began to emerge. In a nutshell, subsets of the bits in the fourth number determined if each of the other 3 inputs had either 0, 64, 128, or 192 subtracted from it. Aside from that, a few fixed bytes were added to the packet, plus a checksum that is a two's-complement modulo 256 plus 4 of the sum of all the data bytes. That was fun to figure out.
+
+![](https://raw.githubusercontent.com/nickbild/rolodex/refs/heads/main/media/data2_4.jpg)
 
 With the encoding details worked out, I also had enough to reverse the algorithm to decode messages sent from the Rolodex.
 
