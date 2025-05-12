@@ -43,7 +43,7 @@ Using the encoding method I previously detailed, the device can send data to, an
 
 To use it with an LLM, first you create a new file containing your prompt for the LLM and save it. I have the serial cable hooked up to a Raspberry Pi 400 via a serial-to-USB adapter. A Python script listens for a transfer (that is manually initiated), then decodes it after it arrives. This kind of reminds me of cassette tape storage on old computers — press play on the data recorder then hit any key to continue.
 
-The prompt is forwarded into a TinyLlama 1.1B LLM running locally on the machine. This could just as easily be a remote connection to ChatGPT or whatever else you want to use. When the response is received, you will be prompted to put the Rolodex in receiving mode. The script then encodes the data and starts a serial transfer. The response appears in a new Memo file on the device, which you can slowly and painfully scroll through. Like I said, you’ve really got to want it.
+The prompt is forwarded into a TinyLlama 1.1B LLM running locally on the machine. This could just as easily be a remote connection to ChatGPT or whatever else you want to use. When the LLM response is received, you will be prompted to put the Rolodex in receiving mode. The script then encodes the data and starts a serial transfer. The response appears in a new Memo file on the device, which you can slowly and painfully scroll through. Like I said, you’ve really got to want it.
 
 ## Media
 
