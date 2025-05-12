@@ -37,7 +37,7 @@ With the encoding details worked out, I also had enough to reverse the algorithm
 
 ### Connecting it to an LLM
 
-Using the encoding method I previously detailed, the device can send to, and receive data from, a computer over a serial connection. It has a number of applications, like an address book and calculator, but I chose to use the Memo app, which allows you to create and store text files.
+Using the encoding method I previously detailed, the device can send data to, and receive data from, a computer over a serial connection. It has a number of applications, like an address book and calculator, but I chose to use the Memo app, which allows you to create and store text files.
 
 ![](https://raw.githubusercontent.com/nickbild/rolodex/refs/heads/main/media/full_setup.jpg)
 
