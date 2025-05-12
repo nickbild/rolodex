@@ -10,9 +10,6 @@ What’ll happen if we grow dependent on these tools? Sure, it seems nice at fir
 
 Don't worry, I'll show you the path to safety. Come with me if you want to live!
 
-Watch the video on YouTube:
-![]()
-
 **Check out the video on YouTube:**
 <a href="https://www.youtube.com/watch?v=GvXCZfoAy88">![](https://raw.githubusercontent.com/nickbild/rolodex/refs/heads/main/media/video_preview.png)</a>
 
